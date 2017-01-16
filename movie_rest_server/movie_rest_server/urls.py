@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mrs.views import MoviesView, PersonList, PersonDetail, MovieList, MovieDetail, RoleList, RoleDetail
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^persons/$', PersonList.as_view(), name="person-list"),
+    url(r'^persons/(?P<pk>[0-9]+)/$', PersonDetail.as_view(), name="person-detail"),
+    url(r'^movies/$', MovieList.as_view(), name="movie-list"),
+    url(r'^movies/(?P<pk>[0-9]+)/$', MovieDetail.as_view(), name="movie-detail"),
+    url(r'^roles/$', RoleList.as_view(), name="role-list"),
+    url(r'^roles/(?P<pk>[0-9]+)/$', RoleDetail.as_view(), name="role-detail"),
 ]
